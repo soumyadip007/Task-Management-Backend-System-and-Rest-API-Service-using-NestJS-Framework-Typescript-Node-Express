@@ -1,8 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Task, TaskStatus } from './tasks.model';
 import { TasksService } from './tasks.service';
-import * as uuid from 'uuid';
-import { TestingModuleBuilder } from '@nestjs/testing';
+import { CreateTaskDTO } from './dto/create-task.dto';
+import { Task } from './tasks.model';
 
 @Controller('tasks')
 export class TasksController {
@@ -17,6 +16,19 @@ export class TasksController {
     }
 
     
+    @Post()
+    createlTasks(@Body() createTaskDTO : CreateTaskDTO ) : Task{
+        console.log('title',createTaskDTO.title);
+        console.log('description',createTaskDTO.description);
+
+        return this.tasksService.createTask(createTaskDTO);
+    
+    }
+
+}
+
+
+/*
 
     @Post()
     createlTasks(
@@ -29,5 +41,4 @@ export class TasksController {
         return this.tasksService.createTask(title,description);
       //  return this.tasksService.getAllTasks()
     }
-
-}
+*/
