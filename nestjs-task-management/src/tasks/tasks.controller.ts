@@ -20,6 +20,12 @@ export class TasksController {
         return this.tasksService.getTaskByID(id)
     }
 
+    
+    @Get('/:id')
+    deleteTask(@Param('id') id:string) : void{
+        this.tasksService.getTaskByID(id)
+    }
+
     @Post()
     createlTasks(@Body() createTaskDTO : CreateTaskDTO ) : Task{
         console.log('title',createTaskDTO.title);
