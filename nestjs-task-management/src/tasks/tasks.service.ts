@@ -32,4 +32,12 @@ export class TasksService {
         this.tasks.push(task);
         return task;      
     }
+
+
+    updateTask(id:string, status:TaskStatus) : Task{
+       const task=this.getTaskByID(id);
+       task.status=status;
+       return task;
+            
+    }
 }
